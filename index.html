@@ -44,5 +44,24 @@
         </div>
     </div>
 
+    <script src="app.js"></script>
+    <script>
+        function interceptTarget(targetId) {
+            fetch('http://127.0.0.1:5000/intercept', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: targetId })
+            })
+            .then(res => res.json())
+            .then(data => {
+                const historyList = document.getElementById('history-list');
+                // Reverses the array so the newest kills appear at the TOP of the list!
+                historyList.innerHTML = data.history.reverse().map(id => 
+                    `<li><span style="color:#22c55e">[SECURE]</span> ${id} - NEUTRALIZED</li>`
+                ).join('');
+            });
+        }
+    </script>
+
 </body>
 </html>
