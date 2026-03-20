@@ -4,7 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SiftGuard Tactical Dashboard</title>
-    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     
+<h1>[ SIFTGUARD ] TACTICAL AI DEFENSE</h1>
+
+    <div class="dashboard">
+        <div class="card radar-card">
+            <h3>AESA RADAR FEED - SECTOR 7</h3>
+            <canvas id="radar" width="800" height="500"></canvas>
+            <div class="controls">
+                <button class="start" onclick="startSimulation()">INITIALIZE SWARM</button>
+                <button class="reset" onclick="resetSimulation()">SYSTEM RESET</button>
+            </div>
+        </div>
+
+        <div class="card data-card">
+            <h3>THREAT ANALYSIS & TELEMETRY</h3>
+            
+            <div class="stat-box">
+                <div class="stat">Active on Radar: <b id="count" style="color:#38bdf8">0</b></div>
+                <div class="stat">Decoys Filtered: <b id="decoys" class="decoy">0</b></div>
+                <div class="stat">Active Threats: <b id="threats" class="high">0</b></div>
+                <div class="stat" style="border-top: 1px solid #334155; padding-top: 5px; margin-top: 5px;">
+                    Total Neutralized: <b id="neutralized" style="color:#22c55e">0</b>
+                </div>
+            </div>
+
+            <h4>SYSTEM LOG</h4>
+            <div id="log" class="log"></div>
+
+            <div id="history-panel" class="panel">
+                <h3>MISSION LOG (DATABASE)</h3>
+                <ul id="history-list">
+                    <li>Waiting for engagement...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
