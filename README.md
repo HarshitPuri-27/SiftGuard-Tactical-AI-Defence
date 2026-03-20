@@ -1,83 +1,84 @@
-# 🚀 SiftGuard – AI Powered Drone Defense System
+# 🚀 SiftGuard – Smart Drone Defense System
 
-## 📌 Problem Statement
-Drone swarms are becoming a major threat in modern security environments such as borders, airports, and military zones.  
+## 📌 About the Project
+SiftGuard is a project focused on handling drone swarm threats in a smarter way.  
 
-The key challenge is identifying real threats among multiple decoy drones in real time, which can lead to delayed or incorrect responses.
+In real-world situations like border areas or airports, multiple drones can appear at the same time. The main challenge is to quickly identify which ones are actual threats and which are just decoys.  
 
----
-
-## 💡 Our Solution
-SiftGuard is a smart defense system concept designed to detect, monitor, and classify drone threats using an intelligent radar-based interface.  
-
-It aims to assist in faster decision-making by visually representing incoming aerial objects and their threat levels.
+In this stage, we have built a working simulation that shows how such a system can operate.
 
 ---
 
-## 🖥️ Prototype (Round 1)
-This version represents the **UI and system design** of SiftGuard.
+## 🎯 Problem
+Drone swarms create confusion in traditional detection systems.  
 
-### Features:
-- Real-time radar-style interface (visual simulation)
-- Tactical dashboard layout
-- Control system (Initialize / Reset)
-- Threat monitoring panel (UI level)
-
-> ⚠️ Note: AI-based threat detection and backend integration will be implemented in the next stage.
+Some major challenges are:
+- Identifying real threats among multiple drones  
+- Reducing false alarms  
+- Making faster decisions  
 
 ---
 
-## 🧠 User Research
-We conducted basic user research to understand real-world needs:
+## 💡 What We Built (Round 2)
+In this version, we have developed a **JavaScript-based simulation system**.
 
-1. **Security Student**
-   - Concern: Difficulty in identifying real drone threats  
-   - Insight: Faster decision-making system is required  
+It includes:
+- Radar-style visualization of drones  
+- Simulated drone movement  
+- Basic threat representation logic  
+- Interactive control system  
 
-2. **Tech Enthusiast**
-   - Concern: False alarms in detection systems  
-   - Insight: AI-based filtering is important  
-
-3. **Defense Aspirant**
-   - Concern: Manual systems are slow  
-   - Insight: Automation is necessary  
-
-### Conclusion:
-Users need an intelligent, fast, and automated system for threat detection.
+This helps demonstrate how the system behaves in a real scenario.
 
 ---
 
-## ⚙️ Tech Stack
-- HTML  
-- CSS  
-- JavaScript (for future integration)
+## ⚙️ How It Works
+- Drones are generated in the radar interface  
+- Their movement is simulated using JavaScript  
+- The system tracks their position and behavior  
+- Based on logic, threats can be identified and monitored  
+
+This simulation acts as a foundation for the full system.
 
 ---
 
-## 🔄 Future Scope
-- AI-based threat classification (Machine Learning)
-- Real-time backend integration (Flask / APIs)
-- Autonomous interception system
-- Deployment for real-world security systems
+## 📡 IoT Integration (Concept)
+The system is designed to work with IoT-based sensors in real-world applications.  
+
+These sensors can provide:
+- Speed data  
+- Movement patterns  
+- Signal strength  
+
+In future, this data will be used by the AI model for accurate threat detection.
 
 ---
 
-## 🌍 Potential Use Cases
-- Border security  
-- Military defense systems  
-- Airport surveillance  
-- Critical infrastructure protection  
+## 🖥️ Features
+- Radar-style UI simulation  
+- Real-time drone movement (JS-based)  
+- Interactive controls (Start / Reset)  
+- Scalable system design  
+
+
+## 🧠 User Input
+We discussed the idea with a few users.  
+
+Key points:
+- Need for faster response systems  
+- Reducing false positives is important  
+- Automation is required in modern defense  
 
 ---
 
-## 💰 Business Model
-SiftGuard can be developed as:
-
-- Defense SaaS platform  
-- AI surveillance solution for airports and security agencies  
-- Subscription-based monitoring system  
+## 🔮 Next Steps
+- Add AI-based threat classification  
+- Integrate backend (Flask + ML)  
+- Use real sensor data for better accuracy  
 
 ---
 
 ## 🏁 Conclusion
-SiftGuard aims to make drone defense smarter, faster, and more reliable by combining intelligent design with future AI integration.
+This version of SiftGuard demonstrates how a drone defense system can be visualized and simulated.  
+
+It provides a strong base for building a complete AI-powered solution in the next stage.
