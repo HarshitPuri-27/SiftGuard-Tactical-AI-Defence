@@ -1,0 +1,151 @@
+/* --- TACTICAL MILITARY THEME --- */
+body {
+    background: #020617; /* Very dark blue/black */
+    color: #e2e8f0;
+    font-family: 'Consolas', 'Courier New', monospace; /* Authentic terminal font */
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #38bdf8;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.card {
+    background: #0f172a;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid #1e293b;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    position: relative;
+}
+
+/* Tactical glowing top borders */
+.radar-card { border-top: 3px solid #38bdf8; }
+.data-card { border-top: 3px solid #ef4444; }
+
+h3 {
+    margin-top: 0;
+    color: #94a3b8;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+canvas {
+    width: 100%;
+    background: #000;
+    border-radius: 4px;
+    border: 1px solid #334155;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-family: 'Consolas', monospace;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.2s;
+}
+
+button:hover { opacity: 0.8; }
+.start { background: #38bdf8; color: #0f172a; }
+.reset { background: #1e293b; color: #f8fafc; border: 1px solid #475569;}
+
+
+.stat-box {
+    background: #020617;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #1e293b;
+    margin-bottom: 20px;
+}
+
+.stat { margin: 8px 0; font-size: 16px; }
+.high { color: #ef4444; text-shadow: 0 0 5px rgba(239, 68, 68, 0.5); }
+.decoy { color: #64748b; }
+
+.log, #history-list {
+    height: 150px;
+    overflow-y: auto;
+    font-size: 12px;
+    background: #000;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #1e293b;
+    color: #a3a8b4;
+    list-style: none;
+    margin: 0;
+}
+
+#history-panel h3 { margin-top: 20px; }
+
+/* --- CRITICAL ALERT ANIMATIONS --- */
+@keyframes redFlash {
+    0% { background-color: #020617; }
+    50% { background-color: #450a0a; }
+    100% { background-color: #020617; }
+}
+body.breach-alert { animation: redFlash 0.5s ease-in-out 6; }
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+.log-critical {
+    color: #ff0000;
+    font-weight: bold;
+    display: inline-block;
+    animation: shake 0.2s ease-in-out 3;
+    text-shadow: 0 0 5px red;
+}
+
+/* --- ADVANCED CRT MONITOR EFFECTS --- */
+body::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none; /* Lets you click through the overlay */
+}
+
+/* Make the canvas look like glowing phosphor glass */
+canvas {
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.15) inset, 0 0 20px rgba(0,0,0,0.8);
+    border: 2px solid #14532d;
+}
+
+/* Harder, sharper glowing text for the stats */
+.stat b {
+    text-shadow: 0 0 8px currentColor;
+    letter-spacing: 1px;
+}
