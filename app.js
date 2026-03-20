@@ -1,6 +1,7 @@
 const canvas = document.getElementById("radar");
 const ctx = canvas.getContext("2d");
 
+    
 // --- TACTICAL AUDIO ENGINE (Web Audio API) ---
 const sfx = {
     ctx: null,
@@ -98,7 +99,6 @@ const sfx = {
         o1.stop(now + 3.0); o2.stop(now + 3.0);
     }
 };
-
 
 const centerX = canvas.width / 2;
 const centerY = canvas.height / 2;
@@ -548,6 +548,88 @@ function animate() {
     drawExplosions();
     ctx.globalCompositeOperation = "source-over"; 
 
+    // --- 1. CINEMATIC VICTORY OVERLAY ---
+    if (campaignWon) {
+        // Dark tactical wash over the radar
+        ctx.fillStyle = "rgba(2, 6, 23, 0.6)"; 
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Cinematic Letterboxing (Black bars at top and bottom)
+        ctx.fillStyle = "#020617";
+        ctx.fillRect(0, 0, canvas.width, 80);
+        ctx.fillRect(0, canvas.height - 80, canvas.width, 80);
+
+        // Heavy Glowing Neon Text
+        ctx.fillStyle = "#4ade80"; // Bright green
+        ctx.shadowColor = "#22c55e";
+        ctx.shadowBlur = 30; // Massive glow effect
+        ctx.font = "bold 46px Consolas";
+        ctx.textAlign = "center";
+        ctx.fillText("MISSION ACCOMPLISHED", centerX, centerY - 15);
+        ctx.shadowBlur = 0; // Turn off glow for the subtext
+        
+        // Subtext
+        ctx.fillStyle = "#f8fafc";
+        ctx.font = "18px Consolas";
+        ctx.fillText(`Airspace Secured. ${totalNeutralizedScore} Lethal Threats Neutralized.`, centerX, centerY + 30);
+        ctx.textAlign = "left"; 
+    }
+
+    // --- 2. MASSIVE BREACH WARNING OVERLAY ---
+    if (breachWarningFrames > 0) {
+        // Pulsing Red Siren Effect
+        let pulse = Math.abs(Math.sin(breachWarningFrames * 0.1));
+        ctx.fillStyle = `rgba(220, 38, 38, ${0.1 + pulse * 0.25})`; 
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw Military Hazard Stripes (Top and Bottom)
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, canvas.width, 40);
+        ctx.fillRect(0, canvas.height - 40, canvas.width, 40);
+        
+        ctx.fillStyle = "#ef4444"; // Red stripes
+        for(let i = -50; i < canvas.width; i += 60) {
+            // Top stripes
+            ctx.beginPath();
+            ctx.moveTo(i, 0); ctx.lineTo(i + 30, 0);
+            ctx.lineTo(i + 10, 40); ctx.lineTo(i - 20, 40);
+            ctx.fill();
+            // Bottom stripes
+            ctx.beginPath();
+            ctx.moveTo(i, canvas.height - 40); ctx.lineTo(i + 30, canvas.height - 40);
+            ctx.lineTo(i + 10, canvas.height); ctx.lineTo(i - 20, canvas.height);
+            ctx.fill();
+        }
+
+        // Giant Red Text with Shadow
+        ctx.fillStyle = "#ef4444";
+        ctx.shadowColor = "#b91c1c";
+        ctx.shadowBlur = 20;
+        ctx.font = "bold 48px Consolas";
+        ctx.textAlign = "center";
+        ctx.fillText("CRITICAL BREACH DETECTED", centerX, centerY - 50);
+        ctx.shadowBlur = 0;
+
+        // Specific Drone Details
+        ctx.fillStyle = "#f8fafc";
+        ctx.font = "bold 18px Consolas";
+        ctx.fillText(`ASSET COMPROMISED BY: ${breachDroneId}`, centerX, centerY - 10);
+        
+        // --- NEW: Typewriter Effect for Damage Control ---
+        ctx.fillStyle = "#facc15";
+        ctx.font = "16px Consolas";
+        let warningText = "INITIATING DAMAGE CONTROL PROTOCOLS...";
+        
+        // Calculates how many letters to show based on the frame timer
+        let showChars = Math.floor((180 - breachWarningFrames) / 2);
+        if (showChars > warningText.length) showChars = warningText.length;
+        
+        ctx.fillText(warningText.substring(0, showChars), centerX, centerY + 30);
+        
+        ctx.textAlign = "left"; 
+        
+        breachWarningFrames--; 
+    }
 
     requestAnimationFrame(animate);
 }
@@ -644,6 +726,13 @@ if (dashboardTitle) {
 }
 
 animate();
+
+// --- AUDIO ENGINE UNLOCKER ---
+// Forces the browser to unlock the audio the moment you click anywhere on the page
+document.body.addEventListener('click', function() {
+    if (!sfx.ctx) sfx.init();
+    else if (sfx.ctx.state === 'suspended') sfx.ctx.resume();
+}, { once: true });
 
 
 // ==========================================
