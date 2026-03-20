@@ -1,0 +1,12 @@
+# ==========================================
+# SIFTGUARD: TACTICAL IOT EDGE NODE DEPENDENCIES
+# ==========================================
+# These dependencies are required for the app.py backend 
+# to ingest physical SDR/Acoustic sensor data and stream 
+# it to the browser-native dashboard via WebSockets.
+
+Flask==3.0.3        # Lightweight web server for edge deployment
+websockets==12.0    # Real-time, zero-latency streaming to the frontend Canvas
+paho-mqtt==2.1.0    # Lightweight IoT protocol for reading physical sensor nodes
+numpy==1.26.4       # For processing trajectory and spatial math at the edge
+pyserial==3.5       # For reading raw hardware telemetry via USB/Serial antennas
