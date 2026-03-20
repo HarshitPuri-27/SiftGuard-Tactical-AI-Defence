@@ -1,5 +1,3 @@
-# SiftGuard-Tactical-AI-Defence
-
 # SiftGuard: Psychoacoustic Airspace Defense
 
 **Built for HackIndia 2026 — Open Innovation Track**
